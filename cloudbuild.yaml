@@ -6,4 +6,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '-t', gcr.io/boxwood-bliss-375813/awesome-project:$SHORT_SHA' ]
           
-# just for testing
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['beta', 'run', 'deploy',  'awesome-project', '--region=asia-south1', '--platform=managed', '--image=gcr.io/boxwood-bliss-375813/awesome-project:$SHORT_SHA' ]
+
